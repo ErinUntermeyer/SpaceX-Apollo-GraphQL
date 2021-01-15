@@ -1,5 +1,14 @@
 import React from 'react';
+import { gql, useMutation } from '@apollo/client';
 
-export default function Login() {
-  return <div />;
-}
+import { LoginForm, Loading } from '../components';
+import * as LoginTypes from './__generated__/login';
+
+export const LOGIN_USER = gql`
+  mutation Login($email: String!) {
+    login(email: $email) {
+      id
+      token
+    }
+  }
+`;
